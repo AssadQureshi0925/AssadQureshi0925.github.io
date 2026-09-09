@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assad Ullah - AI Engineer, Agentic AI Specialist & Flutter Developer">
+  <title>Assad Ullah | AI Engineer, Agentic AI & Flutter Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+  <!-- Ambient Animated Background Particles/Blobs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <span class="logo-bracket">&lt;</span><span class="logo-name">Assad Ullah</span><span class="logo-bracket">/&gt;</span>
+      </a>
+      
+      <nav class="nav-links" id="nav-menu">
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-microchip"></i> Stack</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
+        <a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contact" class="btn btn-sm btn-primary hide-mobile">Hire Me</a>
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section hero-centered">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span> Available for Agentic AI, Flutter & Automations
+          </div>
+          
+          <h1 class="hero-title">
+            Transforming Ideas with<br>
+            <span class="gradient-text">Autonomous AI & Flutter</span>
+          </h1>
+
+          <div class="hero-role-badge">
+            <span class="role-prefix">I am</span>
+            <span class="typing-container">
+              <span id="typing-text"></span><span class="cursor">&nbsp;</span>
+            </span>
+          </div>
+
+          <p class="hero-subtitle">
+            Specialized in building Autonomous Multi-Agent systems, robust workflow automations, production-ready Flutter apps (creator of <strong>Dial for Help</strong>), and intelligent web architectures.
+          </p>
+          
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary btn-glow">
+              <i class="fa-solid fa-robot"></i> Explore Featured Work
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-solid fa-comments"></i> Start a Project
+            </a>
+            <a href="https://wa.me/923030330925" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" title="Chat on WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+
+          <!-- Quick Stat Counters in Hero -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-num">Agentic AI</span>
+              <span class="metric-label">Multi-Agent Systems</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-num">Dial for Help</span>
+              <span class="metric-label">Flagship Flutter App</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-num">100%</span>
+              <span class="metric-label">Automated Workflows</span>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/AssadQureshi0925" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assadullah10001@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Send Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/923030330925" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp-social" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll to About section">
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Who I Am</span>
+          <h2 class="section-title">About Assad Ullah</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-image-wrapper">
+            <div class="avatar-card glass-card">
+              <div class="avatar-glow"></div>
+              <div class="avatar-icon-box">
+                <i class="fa-solid fa-brain avatar-main-icon"></i>
+              </div>
+              <div class="avatar-info">
+                <h3>Assad Ullah</h3>
+                <p>AI Engineer & Flutter Developer</p>
+              </div>
+              <div class="floating-badge badge-1">
+                <i class="fa-solid fa-robot"></i> Agentic AI
+              </div>
+              <div class="floating-badge badge-2">
+                <i class="fa-brands fa-flutter"></i> Flutter Expert
+              </div>
+            </div>
+          </div>
+
+          <div class="about-content">
+            <div class="about-tagline">
+              <i class="fa-solid fa-bolt text-accent"></i> Engineering the next generation of autonomous software.
+            </div>
+            <p>
+              Main aik passionate <strong>AI Engineer aur Flutter Mobile App Developer</strong> hoon. Mera mission hai advanced AI capabilities aur seamless mobile/web experiences ko aapas me integrate karke high-impact solutions banana.
+            </p>
+            <p>
+              Mera flagship project <strong>"Dial for Help"</strong> ek life-saving Flutter emergency assistance app hai jisme live calling, geolocation services aur real-time assistance integrated hai. Iske alawa maine multi-agent architectures (CrewAI, LangGraph), LLM pipelines (Gemini API, OpenAI) aur automated business bots design kiye hain.
+            </p>
+
+            <div class="about-stats">
+              <div class="stat-card glass-card">
+                <div class="stat-icon-wrap"><i class="fa-solid fa-microchip"></i></div>
+                <span class="stat-number">AI Agents</span>
+                <span class="stat-label">Multi-Agent Systems</span>
+              </div>
+              <div class="stat-card glass-card">
+                <div class="stat-icon-wrap"><i class="fa-brands fa-flutter"></i></div>
+                <span class="stat-number">Flutter</span>
+                <span class="stat-label">iOS & Android Apps</span>
+              </div>
+              <div class="stat-card glass-card">
+                <div class="stat-icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span class="stat-number">Automation</span>
+                <span class="stat-label">Intelligent Pipelines</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Technical Stack</span>
+          <h2 class="section-title">AI, Flutter & Web Arsenal</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- AI & Agentic AI -->
+          <div class="skill-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon-box ai-icon"><i class="fa-solid fa-brain"></i></div>
+              <div>
+                <h3>Agentic AI & LLMs</h3>
+                <span class="category-desc">Multi-agent systems & smart models</span>
+              </div>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-solid fa-robot"></i> Multi-Agent Systems</span>
+              <span class="skill-pill"><i class="fa-solid fa-bolt"></i> Gemini API & OpenAI</span>
+              <span class="skill-pill"><i class="fa-solid fa-network-wired"></i> LangChain & LangGraph</span>
+              <span class="skill-pill"><i class="fa-solid fa-database"></i> RAG & Vector Search</span>
+              <span class="skill-pill"><i class="fa-solid fa-gears"></i> Tool Calling & Workflows</span>
+            </div>
+          </div>
+
+          <!-- Flutter & Mobile -->
+          <div class="skill-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon-box flutter-icon"><i class="fa-brands fa-flutter"></i></div>
+              <div>
+                <h3>Flutter App Development</h3>
+                <span class="category-desc">Cross-platform iOS & Android</span>
+              </div>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-brands fa-flutter"></i> Flutter & Dart</span>
+              <span class="skill-pill"><i class="fa-solid fa-mobile-screen"></i> Production Mobile Apps</span>
+              <span class="skill-pill"><i class="fa-solid fa-fire"></i> Firebase Backend</span>
+              <span class="skill-pill"><i class="fa-solid fa-phone"></i> Emergency Direct Calling</span>
+              <span class="skill-pill"><i class="fa-solid fa-location-dot"></i> Live GPS & Maps APIs</span>
+            </div>
+          </div>
+
+          <!-- Automation & Web -->
+          <div class="skill-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon-box automation-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div>
+                <h3>Automations & Web</h3>
+                <span class="category-desc">End-to-end automated pipelines</span>
+              </div>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-solid fa-cogs"></i> Workflow Automation</span>
+              <span class="skill-pill"><i class="fa-brands fa-python"></i> Python Automation Bots</span>
+              <span class="skill-pill"><i class="fa-brands fa-react"></i> Next.js & React</span>
+              <span class="skill-pill"><i class="fa-solid fa-server"></i> FastAPI Microservices</span>
+              <span class="skill-pill"><i class="fa-solid fa-code"></i> AI Web Platforms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Real Work</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All Projects</button>
+          <button class="filter-btn" data-filter="flutter"><i class="fa-brands fa-flutter"></i> Flutter Apps</button>
+          <button class="filter-btn" data-filter="agentic-ai"><i class="fa-solid fa-robot"></i> Agentic AI</button>
+          <button class="filter-btn" data-filter="automation"><i class="fa-solid fa-bolt"></i> Automations</button>
+          <button class="filter-btn" data-filter="web"><i class="fa-solid fa-globe"></i> AI Web Apps</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Populated by projects.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Journey</span>
+          <h2 class="section-title">Experience & Milestones</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="timeline">
+          <!-- Milestone 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-header">
+                <span class="timeline-date">Active Focus</span>
+                <span class="timeline-pill">AI & Agents</span>
+              </div>
+              <h3 class="timeline-title">AI Engineer & Agentic Systems Architect</h3>
+              <h4 class="timeline-subtitle">Independent & Client Solutions</h4>
+              <p>
+                Architecting autonomous multi-agent systems, automating enterprise business operations, and developing end-to-end intelligent AI pipelines integrated with web and mobile platforms.
+              </p>
+              <div class="timeline-tags">
+                <span>Agentic AI</span><span>Gemini API</span><span>LangGraph</span><span>Python</span><span>Automations</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card featured-milestone">
+              <div class="timeline-header">
+                <span class="timeline-date">Flagship Release</span>
+                <span class="timeline-pill flutter-pill">Flutter App</span>
+              </div>
+              <h3 class="timeline-title">Lead Flutter Developer & Creator</h3>
+              <h4 class="timeline-subtitle">Dial for Help App</h4>
+              <p>
+                Engineered and launched <em>Dial for Help</em>, a complete Flutter emergency & assistance mobile app featuring direct one-tap dialing, GPS location sharing, real-time status tracking, and Firebase cloud infrastructure.
+              </p>
+              <div class="timeline-tags">
+                <span>Flutter</span><span>Dart</span><span>Firebase</span><span>Emergency APIs</span><span>Google Maps</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-header">
+                <span class="timeline-date">Foundation</span>
+                <span class="timeline-pill">Web & APIs</span>
+              </div>
+              <h3 class="timeline-title">Full Stack Web & AI Integrations Developer</h3>
+              <h4 class="timeline-subtitle">Modern Web Applications</h4>
+              <p>
+                Developed performant web apps powered by AI endpoints, FastAPI microservices, and interactive UI dashboards with responsive design.
+              </p>
+              <div class="timeline-tags">
+                <span>React / Next.js</span><span>FastAPI</span><span>REST APIs</span><span>Python</span><span>Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Get In Touch</span>
+          <h2 class="section-title">Let's Build Something Great</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info glass-card">
+            <h3>Need an AI Agent, Automation, or Flutter App?</h3>
+            <p>
+              Main available hoon custom AI Agents build karne ke liye, business processes automate karne, aur high-quality Flutter apps ya modern AI web apps bananey ke liye.
+            </p>
+
+            <div class="contact-items">
+              <a href="https://wa.me/923030330925" target="_blank" rel="noopener noreferrer" class="contact-item contact-card">
+                <div class="contact-icon-box whatsapp-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <div>
+                  <span class="contact-label">WhatsApp (Direct Instant Chat)</span>
+                  <span class="contact-value">0303 0330925</span>
+                </div>
+              </a>
+
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=assadullah10001@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-item contact-card email-btn-trigger">
+                <div class="contact-icon-box email-box"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span class="contact-label">Email (Click to Open Gmail)</span>
+                  <span class="contact-value">assadullah10001@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/AssadQureshi0925" target="_blank" rel="noopener noreferrer" class="contact-item contact-card">
+                <div class="contact-icon-box github-box"><i class="fa-brands fa-github"></i></div>
+                <div>
+                  <span class="contact-label">GitHub Profile</span>
+                  <span class="contact-value">github.com/AssadQureshi0925</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-container glass-card">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Aapka Naam" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="email@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Project Type</label>
+                <input type="text" id="subject" name="subject" placeholder="AI Agent / Flutter App / Automation" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Project details ya requirements likhein..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-glow">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+              <div id="form-feedback" class="form-feedback"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-container glass-card">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-content" id="modal-body">
+        <!-- Dynamically injected -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© <span id="current-year">2026</span> <strong>Assad Ullah</strong>. Crafted for AI & Mobile Excellence.</p>
+      <div class="footer-links">
+        <a href="#hero">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
