@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Timer — Assadullah</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:1rem}
+  .app{width:100%;max-width:420px;text-align:center}
+  h1{font-size:1.6rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  .modes{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
+  .modes button{background:#1e293b;color:#cbd5e1;padding:.6rem 1rem;border:0;border-radius:.6rem;cursor:pointer;font-weight:600}
+  .modes button.active{background:#6366f1;color:#fff}
+  .time{font-size:5rem;font-weight:800;font-variant-numeric:tabular-nums;margin-bottom:.5rem}
+  .status{color:#94a3b8;margin-bottom:1.5rem}
+  .controls{display:flex;gap:.5rem;justify-content:center}
+  .controls button{padding:.8rem 1.4rem;border:0;border-radius:.6rem;background:#6366f1;color:#fff;font-weight:600;cursor:pointer;font-size:1rem}
+  .controls button.secondary{background:#1e293b;color:#cbd5e1}
+  .rounds{margin-top:1.5rem;color:#94a3b8}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>Focus Timer</h1>
+  <p class="sub">Work in focused 25-minute blocks, then take a 5-minute break.</p>
+  <div class="modes">
+    <button id="m-focus" class="active">Focus · 25 min</button>
+    <button id="m-break">Break · 5 min</button>
+  </div>
+  <div class="time" id="time">25:00</div>
+  <div class="status" id="status">Ready when you are.</div>
+  <div class="controls">
+    <button id="start">Start</button>
+    <button id="reset" class="secondary">Reset</button>
+  </div>
+  <p class="rounds" id="rounds">Completed focus sessions: 0</p>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  const DUR={focus:25*60,break:5*60};
+  let mode="focus", seconds=DUR.focus, timer=null, sessions=0;
+  const timeEl=document.getElementById("time"), statusEl=document.getElementById("status"),
+        startBtn=document.getElementById("start"), roundsEl=document.getElementById("rounds");
+  function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");}
+  function draw(){timeEl.textContent=fmt(seconds); document.title=fmt(seconds)+" — Focus Timer";}
+  function setMode(m){
+    clearInterval(timer); timer=null; startBtn.textContent="Start";
+    mode=m; seconds=DUR[m];
+    document.getElementById("m-focus").classList.toggle("active",m==="focus");
+    document.getElementById("m-break").classList.toggle("active",m==="break");
+    statusEl.textContent=m==="focus"?"Ready to focus.":"Time to rest your eyes.";
+    draw();
+  }
+  document.getElementById("m-focus").onclick=()=>setMode("focus");
+  document.getElementById("m-break").onclick=()=>setMode("break");
+  startBtn.onclick=()=>{
+    if(timer){clearInterval(timer); timer=null; startBtn.textContent="Start"; statusEl.textContent="Paused."; return;}
+    startBtn.textContent="Pause";
+    statusEl.textContent=mode==="focus"?"Focusing — no distractions.":"On a break. Relax.";
+    timer=setInterval(()=>{
+      seconds--;
+      if(seconds<=0){
+        clearInterval(timer); timer=null; startBtn.textContent="Start";
+        if(mode==="focus"){sessions++; roundsEl.textContent="Completed focus sessions: "+sessions; statusEl.textContent="Focus done! Take a 5-minute break."; setMode("break");}
+        else{statusEl.textContent="Break over. Ready for another focus session?"; setMode("focus");}
+      }
+      draw();
+    },1000);
+  };
+  document.getElementById("reset").onclick=()=>setMode(mode);
+  draw();
+</script>
+</body>
+</html>
