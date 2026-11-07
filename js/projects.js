@@ -4,6 +4,45 @@
  */
 const projectsData = [
   {
+    id: "simple-todo-app",
+    title: "Simple Todo App",
+    category: "web",
+    categoryLabel: "Web App",
+    icon: "fa-solid fa-list-check",
+    iconColor: "#6366f1",
+    shortDescription: "A working todo app: add tasks, tick them off, filter them, and they stay saved in your browser.",
+    fullDescription: "A simple, fully working todo app built with plain HTML, CSS and JavaScript. Add a task, mark it done, delete it, filter by All / Active / Done, and your list is saved in localStorage so it is still there when you come back.",
+    technologies: ["HTML", "CSS", "JavaScript", "localStorage"],
+    liveDemo: "https://assadqureshi0925.github.io/projects/todo-app/",
+    github: "https://github.com/AssadQureshi0925/AssadQureshi0925.github.io/tree/main/projects/todo-app"
+  },
+  {
+    id: "simple-calculator",
+    title: "Simple Calculator",
+    category: "web",
+    categoryLabel: "Web App",
+    icon: "fa-solid fa-calculator",
+    iconColor: "#10b981",
+    shortDescription: "A working calculator with keyboard support: add, subtract, multiply, divide and percentages.",
+    fullDescription: "A simple, fully working calculator built with plain HTML, CSS and JavaScript. Use the on-screen buttons or type on your keyboard, with backspace, clear and percentage support.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    liveDemo: "https://assadqureshi0925.github.io/projects/calculator/",
+    github: "https://github.com/AssadQureshi0925/AssadQureshi0925.github.io/tree/main/projects/calculator"
+  },
+  {
+    id: "focus-timer",
+    title: "Focus Timer (Pomodoro)",
+    category: "web",
+    categoryLabel: "Web App",
+    icon: "fa-solid fa-clock",
+    iconColor: "#f59e0b",
+    shortDescription: "A Pomodoro focus timer: 25 minutes of work, then a 5-minute break, with a session counter.",
+    fullDescription: "A simple Pomodoro focus timer built with plain HTML, CSS and JavaScript. Start a 25-minute focus session, take a 5-minute break when it ends, and keep count of completed sessions.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    liveDemo: "https://assadqureshi0925.github.io/projects/pomodoro-timer/",
+    github: "https://github.com/AssadQureshi0925/AssadQureshi0925.github.io/tree/main/projects/pomodoro-timer"
+  },
+  {
     id: "dial-for-help-app",
     title: "Dial for Help - Emergency & Assistance Mobile App",
     category: "flutter",
