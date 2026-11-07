@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workflow Automation — Live Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
+  .app{width:100%;max-width:600px}
+  .badge{display:inline-block;background:#0c4a6e;color:#bae6fd;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  h1{font-size:1.7rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  textarea{width:100%;min-height:130px;padding:.9rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:.95rem;margin-bottom:1rem}
+  button{padding:.8rem 1.2rem;border:0;border-radius:.6rem;background:#0ea5e9;color:#fff;font-weight:600;cursor:pointer;margin-bottom:1rem}
+  table{width:100%;border-collapse:collapse;background:#1e293b;border-radius:.75rem;overflow:hidden}
+  td,th{padding:.7rem .9rem;text-align:left;border-bottom:1px solid #334155}
+  th{color:#94a3b8;font-size:.85rem;text-transform:uppercase}
+  #status{margin-top:1rem;line-height:1.7;color:#94a3b8}
+  #status b{color:#4ade80}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">Interactive demo — simulated pipeline, no real data leaves your browser</span>
+  <h1>Workflow Automation</h1>
+  <p class="sub">Paste an invoice or email below. The pipeline extracts the data, summarises it with AI, and routes it — automatically.</p>
+  <textarea id="text">INVOICE #INV-2041
+Vendor: Bright Office Supplies
+Date: 12 March 2026
+Items: 20x printer paper, 5x ink cartridges
+Total: PKR 48,500
+Due: 26 March 2026</textarea>
+  <button onclick="process()">▶ Run automation</button>
+  <div id="out"></div>
+  <div id="status"></div>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  function process(){
+    const t=document.getElementById("text").value;
+    const pick=re=>{const m=t.match(re); return m?m[1].trim():"—";};
+    const inv=pick(/INVOICE\s*#?\s*([A-Za-z0-9-]+)/i), vendor=pick(/Vendor:\s*(.+)/i),
+          date=pick(/Date:\s*(.+)/i), total=pick(/Total:\s*(.+)/i), due=pick(/Due:\s*(.+)/i);
+    document.getElementById("out").innerHTML="<table><tr><th>Field</th><th>Extracted</th></tr>"+
+      "<tr><td>Invoice</td><td>"+inv+"</td></tr><tr><td>Vendor</td><td>"+vendor+"</td></tr>"+
+      "<tr><td>Date</td><td>"+date+"</td></tr><tr><td>Total</td><td>"+total+"</td></tr>"+
+      "<tr><td>Due</td><td>"+due+"</td></tr></table>";
+    document.getElementById("status").innerHTML="✅ <b>Saved to Google Sheets</b> — row added.<br>✅ <b>Summary sent</b> — invoice "+inv+" from "+vendor+" for "+total+", due "+due+".<br>✅ <b>Reminder scheduled</b> — 3 days before the due date.<br>⏱️ Manual work saved: about 10 minutes.";
+  }
+  process();
+</script>
+</body>
+</html>
