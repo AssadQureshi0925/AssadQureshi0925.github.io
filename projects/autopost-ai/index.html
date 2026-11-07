@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoPost AI — Live Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
+  .app{width:100%;max-width:600px}
+  .badge{display:inline-block;background:#78350f;color:#fde68a;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  h1{font-size:1.7rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  form{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+  input{flex:1;min-width:200px;padding:.8rem 1rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:1rem}
+  select{padding:.8rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0}
+  button{padding:.8rem 1.2rem;border:0;border-radius:.6rem;background:#d97706;color:#fff;font-weight:600;cursor:pointer}
+  .post{background:#1e293b;border-radius:.75rem;padding:1rem;margin-bottom:.75rem;line-height:1.6}
+  .post b{color:#fbbf24}
+  .post small{color:#94a3b8}
+  #status{color:#94a3b8;line-height:1.7;margin-top:.5rem}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">Interactive demo — simulated generator, no real post is published</span>
+  <h1>AutoPost AI</h1>
+  <p class="sub">Enter a topic. The bot analyses trends, writes posts for each platform, and schedules them.</p>
+  <form id="form">
+    <input id="topic" placeholder="e.g. new coffee shop opening" required>
+    <select id="platform"><option>All platforms</option><option>Instagram</option><option>LinkedIn</option><option>X / Twitter</option></select>
+    <button type="submit">Generate posts</button>
+  </form>
+  <div id="out"></div>
+  <div id="status"></div>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  document.getElementById("form").addEventListener("submit",e=>{
+    e.preventDefault();
+    const t=document.getElementById("topic").value.trim();
+    const p=document.getElementById("platform").value;
+    const posts=[
+      {n:"Instagram", x:"☕ "+t+" — fresh, warm and waiting for you. Come taste the difference today! #NewOpening #CoffeeLovers"},
+      {n:"LinkedIn", x:"We are excited to share: "+t+". Built on quality, consistency and a team that cares. Follow us for the full story."},
+      {n:"X / Twitter", x:"Big news: "+t+" ☕🎉 First 50 visitors get a free coffee. See you there!"}
+    ];
+    const show=p==="All platforms"?posts:posts.filter(x=>x.n===p);
+    document.getElementById("out").innerHTML=show.map(x=>"<div class='post'><b>"+x.n+"</b><br>"+x.x+"<br><small>Trending tags added automatically</small></div>").join("");
+    document.getElementById("status").innerHTML="✅ <b>3 post variants generated</b> from current trends.<br>✅ <b>Scheduled</b> — tomorrow 6:00 PM, best time for your audience.<br>👀 Waiting for your review before anything is published.";
+  });
+</script>
+</body>
+</html>
