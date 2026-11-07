@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dial for Help — Live Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
+  .app{width:100%;max-width:480px;text-align:center}
+  .badge{display:inline-block;background:#7f1d1d;color:#fecaca;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  h1{font-size:1.7rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  .gps{background:#1e293b;border-radius:.75rem;padding:1rem;margin-bottom:1.5rem;font-size:.95rem}
+  .gps b{color:#fff}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+  button{border:0;border-radius:.75rem;padding:1.25rem .5rem;font-size:1.05rem;font-weight:700;color:#fff;cursor:pointer}
+  .police{background:#1d4ed8}.amb{background:#dc2626}.rescue{background:#ea580c}.fire{background:#b45309}
+  button:active{transform:scale(.97)}
+  #status{background:#1e293b;border-radius:.75rem;padding:1rem;min-height:4.5rem;text-align:left;line-height:1.6}
+  .contacts{text-align:left;margin-top:1.5rem}
+  .contacts h3{margin-bottom:.5rem}
+  .contacts li{list-style:none;background:#1e293b;padding:.6rem .9rem;border-radius:.5rem;margin-bottom:.4rem;display:flex;justify-content:space-between}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">Interactive demo — simulated, no real call is made</span>
+  <h1>Dial for Help</h1>
+  <p class="sub">One-tap emergency assistance. Tap a service to see how it works.</p>
+  <div class="gps">Your location: <b id="loc">Detecting GPS…</b><br><span style="color:#94a3b8;font-size:.85rem">Shared live with the responder when you call.</span></div>
+  <div class="grid">
+    <button class="police" onclick="call('Police', '15')">🚓 Police<br><small>15</small></button>
+    <button class="amb" onclick="call('Ambulance', '1122')">🚑 Ambulance<br><small>1122</small></button>
+    <button class="rescue" onclick="call('Rescue', '1122')">🛟 Rescue<br><small>1122</small></button>
+    <button class="fire" onclick="call('Fire Brigade', '16')">🔥 Fire Brigade<br><small>16</small></button>
+  </div>
+  <div id="status">No call yet. Tap a service above.</div>
+  <div class="contacts">
+    <h3>Saved emergency contacts</h3>
+    <ul>
+      <li><span>Family — Home</span><b>0300 1234567</b></li>
+      <li><span>Nearest Hospital</span><b>042 111 222 333</b></li>
+      <li><span>Neighbour — Ahmed</span><b>0301 7654321</b></li>
+    </ul>
+  </div>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  const loc=document.getElementById("loc");
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(p=>{loc.textContent=p.coords.latitude.toFixed(4)+", "+p.coords.longitude.toFixed(4);},
+      ()=>{loc.textContent="31.5204, 74.3587 (Lahore, Pakistan)";},{timeout:5000});
+  } else loc.textContent="31.5204, 74.3587 (Lahore, Pakistan)";
+  function call(name,num){
+    const s=document.getElementById("status");
+    s.innerHTML="📞 <b>Calling "+name+" ("+num+")…</b><br>GPS location sent: "+loc.textContent+"<br>Status: <b style='color:#4ade80'>Connected — help is on the way.</b>";
+  }
+</script>
+</body>
+</html>
