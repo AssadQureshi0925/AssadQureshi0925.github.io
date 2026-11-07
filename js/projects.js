@@ -31,13 +31,13 @@ const projectsData = [
   },
   {
     id: "dial-for-help-app",
-    title: "Dial for Help - Emergency & Assistance Mobile App",
+    title: "Dial for Help - Find Skilled Workers Near You",
     category: "flutter",
     categoryLabel: "Flutter Mobile App",
     icon: "fa-solid fa-phone-volume",
     iconColor: "#ef4444",
-    shortDescription: "A mission-critical Flutter emergency assistance app featuring direct speed dialing, live GPS coordinates sharing, and Firebase backend.",
-    fullDescription: "Dial for Help is Assadullah's flagship mobile application built using Flutter & Dart. It allows users to quickly trigger emergency calls, dispatch live GPS locations to designated responders, fetch nearest emergency services (Police, Ambulance, Rescue), and maintain an offline directory of vital helpline contacts.",
+    shortDescription: "A Flutter home-services app: find a plumber, electrician, mechanic or any skilled worker near you, then call or book them in one tap.",
+    fullDescription: "Dial for Help is Assadullah's flagship mobile application built using Flutter & Dart. Need a plumber, electrician, mechanic, carpenter, painter or cleaner? The app shows nearby workers with ratings, jobs done and prices, shares your live GPS location, and lets you call or book a worker in one tap.",
     technologies: ["Flutter", "Dart", "Firebase", "Geolocation API", "Direct Call Services", "Provider / Riverpod"],
     liveDemo: "https://assadqureshi0925.github.io/projects/dial-for-help/",
     github: "https://github.com/AssadQureshi0925/dial-for-help"
