@@ -11,6 +11,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initContactForm();
   setCurrentYear();
+  const demoClose = document.getElementById("demo-close");
+  const demoModal = document.getElementById("demo-modal");
+  if (demoClose) demoClose.addEventListener("click", () => {
+    demoModal.classList.remove("open");
+    const f = document.getElementById("demo-frame");
+    if (f) f.src = "about:blank";
+    document.body.style.overflow = "auto";
+  });
+  if (demoModal) demoModal.addEventListener("click", (e) => {
+    if (e.target === demoModal) {
+      demoModal.classList.remove("open");
+      const f = document.getElementById("demo-frame");
+      if (f) f.src = "about:blank";
+      document.body.style.overflow = "auto";
+    }
+  });
 });
 
 /* --------------------------------------------------------------------------
