@@ -1,5 +1,5 @@
 /**
- * Main Application Logic for Assad Ullah
+ * Main Application Logic for Assadullah
  * AI Engineer, Agentic AI, Automation, Flutter & Web
  */
 
@@ -199,7 +199,7 @@ function initContactForm() {
     window.location.href = `mailto:assadullah10001@gmail.com?subject=${encodeURIComponent(subject || "New project enquiry")}&body=${body}`;
     submitBtn.innerHTML = originalContent;
     submitBtn.disabled = false;
-    feedback.textContent = "Opening your email app \u2014 your message will be sent to Assad Ullah from there.";
+    feedback.textContent = "Opening your email app \u2014 your message will be sent to Assadullah from there.";
     feedback.className = "form-feedback success";
     form.reset();
   });
