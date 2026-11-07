@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartDoc AI — Live Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
+  .app{width:100%;max-width:600px}
+  .badge{display:inline-block;background:#064e3b;color:#a7f3d0;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  h1{font-size:1.7rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  .doc{background:#1e293b;border-radius:.75rem;padding:1rem;line-height:1.7;margin-bottom:1rem;font-size:.95rem}
+  .doc b{color:#fff}
+  form{display:flex;gap:.5rem;margin-bottom:1rem}
+  input{flex:1;padding:.8rem 1rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:1rem}
+  button{padding:.8rem 1.1rem;border:0;border-radius:.6rem;background:#10b981;color:#fff;font-weight:600;cursor:pointer}
+  #answer{background:#1e293b;border-radius:.75rem;padding:1rem;line-height:1.7;min-height:90px}
+  #answer small{color:#94a3b8}
+  .qs{margin-top:1rem}
+  .qs button{background:#1e293b;color:#cbd5e1;border:0;border-radius:2rem;padding:.4rem .9rem;margin:.2rem;cursor:pointer}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">Interactive demo — simulated RAG, answers come only from the document below</span>
+  <h1>SmartDoc AI</h1>
+  <p class="sub">Chat with a document. Ask a question and get an answer with its exact source.</p>
+  <div class="doc"><b>Company Remote Work Policy (2026)</b><br><br>
+  1. Employees may work remotely up to <b>3 days per week</b>.<br>
+  2. Core working hours are <b>10am to 4pm</b>, Monday to Friday.<br>
+  3. Remote workers receive a <b>PKR 15,000 monthly internet allowance</b>.<br>
+  4. Annual leave is <b>20 days</b>, plus 10 public holidays.<br>
+  5. Laptops are replaced every <b>3 years</b>.</div>
+  <form id="form"><input id="q" placeholder="Ask about this document..." required><button type="submit">Ask</button></form>
+  <div id="answer">Ask a question above, or try one below.</div>
+  <div class="qs">
+    <button onclick="ask('How many days can I work remotely?')">Remote days?</button>
+    <button onclick="ask('What is the internet allowance?')">Internet allowance?</button>
+    <button onclick="ask('How many days of annual leave?')">Annual leave?</button>
+    <button onclick="ask('When are laptops replaced?')">Laptop replacement?</button>
+  </div>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  const answers=[
+    {k:["remote","days","week"], a:"You may work remotely up to <b>3 days per week</b>.", s:"Source: Policy point 1"},
+    {k:["hours","core","working"], a:"Core working hours are <b>10am to 4pm</b>, Monday to Friday.", s:"Source: Policy point 2"},
+    {k:["internet","allowance"], a:"Remote workers receive a <b>PKR 15,000 monthly internet allowance</b>.", s:"Source: Policy point 3"},
+    {k:["leave","annual","holiday"], a:"Annual leave is <b>20 days</b>, plus 10 public holidays.", s:"Source: Policy point 4"},
+    {k:["laptop","replace"], a:"Laptops are replaced every <b>3 years</b>.", s:"Source: Policy point 5"},
+  ];
+  function ask(q){
+    document.getElementById("q").value=q;
+    const l=q.toLowerCase();
+    const hit=answers.find(x=>x.k.some(w=>l.includes(w)));
+    document.getElementById("answer").innerHTML=hit?hit.a+"<br><small>"+hit.s+"</small>"
+      : "I could not find that in this document. Try asking about remote days, working hours, the internet allowance, annual leave, or laptop replacement.<br><small>Source: none found</small>";
+  }
+  document.getElementById("form").addEventListener("submit",e=>{e.preventDefault(); ask(document.getElementById("q").value.trim());});
+</script>
+</body>
+</html>
