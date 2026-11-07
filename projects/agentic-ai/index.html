@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI Multi-Agent System — Live Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
+  .app{width:100%;max-width:600px}
+  .badge{display:inline-block;background:#312e81;color:#c7d2fe;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  h1{font-size:1.7rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  form{display:flex;gap:.5rem;margin-bottom:1rem}
+  input{flex:1;padding:.8rem 1rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:1rem}
+  button{padding:.8rem 1.1rem;border:0;border-radius:.6rem;background:#6366f1;color:#fff;font-weight:600;cursor:pointer}
+  #log{background:#1e293b;border-radius:.75rem;padding:1rem;min-height:300px;line-height:1.7}
+  .agent{margin-bottom:.75rem}
+  .agent b{color:#818cf8}
+  .manager b{color:#4ade80}
+  .examples{margin-top:1rem;color:#94a3b8;font-size:.9rem}
+  .examples button{background:#1e293b;color:#cbd5e1;border:0;border-radius:2rem;padding:.4rem .9rem;margin:.2rem;cursor:pointer}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">Interactive demo — simulated agents, no real API call</span>
+  <h1>Agentic AI Multi-Agent System</h1>
+  <p class="sub">Give the team a goal. Watch the Researcher, Coder, Reviewer and Manager work on it, one after another.</p>
+  <form id="form"><input id="input" placeholder="e.g. Build a landing page for a bakery" required><button type="submit">Run agents</button></form>
+  <div id="log">No task yet. Type a goal above, or try an example below.</div>
+  <div class="examples">
+    Try:
+    <button onclick="run('Plan a product launch for a new coffee brand')">Product launch plan</button>
+    <button onclick="run('Research the best budget smartphones of 2026')">Research smartphones</button>
+    <button onclick="run('Write a Python script to sort files by date')">Python script</button>
+  </div>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  const log=document.getElementById("log"), input=document.getElementById("input");
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  function add(cls,who,text){const d=document.createElement("div");d.className="agent "+cls;d.innerHTML="<b>"+who+":</b> "+text;log.appendChild(d);}
+  async function run(task){
+    if(!task) return;
+    log.innerHTML=""; input.value=task;
+    add("","🎯 Manager","Goal received: <i>"+task+"</i> — splitting it between the agents.");
+    await wait(900);
+    add("","🔍 Researcher","Gathered the key facts and best options for: <i>"+task+"</i>.");
+    await wait(1100);
+    add("","💻 Coder","Drafted the first version based on the research — structure, content and steps ready.");
+    await wait(1100);
+    add("","🧐 Reviewer","Checked the draft: fixed 2 mistakes, tightened the wording, and confirmed nothing important is missing.");
+    await wait(900);
+    add("manager","✅ Manager","Done. Final result for <i>"+task+"</i> is ready — researched, built and reviewed, with no extra prompting from you.");
+  }
+  document.getElementById("form").addEventListener("submit",e=>{e.preventDefault(); run(input.value.trim());});
+</script>
+</body>
+</html>
