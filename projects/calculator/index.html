@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator — Assadullah</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:1rem}
+  .calc{width:100%;max-width:340px}
+  h1{font-size:1.6rem;margin-bottom:.25rem;text-align:center}
+  p.sub{color:#94a3b8;margin-bottom:1.25rem;text-align:center}
+  .display{background:#1e293b;border-radius:.75rem;padding:1rem 1.25rem;text-align:right;font-size:2rem;min-height:4.5rem;word-break:break-all;margin-bottom:.75rem}
+  .display small{display:block;font-size:1rem;color:#94a3b8;min-height:1.25rem}
+  .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+  button{padding:1rem;border:0;border-radius:.6rem;background:#1e293b;color:#e2e8f0;font-size:1.2rem;cursor:pointer}
+  button:hover{background:#334155}
+  button.op{background:#312e81;color:#c7d2fe}
+  button.eq{background:#6366f1;color:#fff;grid-column:span 2}
+  button.clear{background:#7f1d1d;color:#fecaca}
+  a.back{color:#818cf8;display:block;text-align:center;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="calc">
+  <h1>Simple Calculator</h1>
+  <p class="sub">Click the buttons or type on your keyboard.</p>
+  <div class="display"><small id="history"></small><span id="out">0</span></div>
+  <div class="keys">
+    <button class="clear" data-k="C">C</button><button data-k="back">⌫</button><button data-k="%">%</button><button class="op" data-k="/">÷</button>
+    <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button class="op" data-k="*">×</button>
+    <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button class="op" data-k="-">−</button>
+    <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button class="op" data-k="+">+</button>
+    <button data-k="0">0</button><button data-k=".">.</button><button class="eq" data-k="=">=</button>
+  </div>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  const out=document.getElementById("out"), hist=document.getElementById("history");
+  let expr="";
+  function show(){out.textContent=expr||"0";}
+  function press(k){
+    if(k==="C"){expr=""; hist.textContent="";}
+    else if(k==="back"){expr=expr.slice(0,-1);}
+    else if(k==="="){
+      try{const v=Function("return "+expr.replace(/%/g,"/100"))(); hist.textContent=expr+" ="; expr=String(v);}
+      catch(e){expr=""; out.textContent="Error"; return;}
+    }
+    else if("+-*/%".includes(k)&&(!expr||"+-*/%".includes(expr.slice(-1)))){return;}
+    else{expr+=k;}
+    show();
+  }
+  document.querySelectorAll(".keys button").forEach(b=>b.onclick=()=>press(b.dataset.k));
+  document.addEventListener("keydown",e=>{
+    if("0123456789+-*/.%".includes(e.key)) press(e.key==="*"?"*":e.key);
+    else if(e.key==="Enter") press("=");
+    else if(e.key==="Backspace") press("back");
+    else if(e.key==="Escape") press("C");
+  });
+  show();
+</script>
+</body>
+</html>
