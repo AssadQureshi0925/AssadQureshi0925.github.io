@@ -7,56 +7,77 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
   body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
-  .app{width:100%;max-width:480px;text-align:center}
-  .badge{display:inline-block;background:#7f1d1d;color:#fecaca;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  .app{width:100%;max-width:560px}
+  .badge{display:inline-block;background:#312e81;color:#c7d2fe;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
   h1{font-size:1.7rem;margin-bottom:.25rem}
-  p.sub{color:#94a3b8;margin-bottom:1.5rem}
-  .gps{background:#1e293b;border-radius:.75rem;padding:1rem;margin-bottom:1.5rem;font-size:.95rem}
-  .gps b{color:#fff}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
-  button{border:0;border-radius:.75rem;padding:1.25rem .5rem;font-size:1.05rem;font-weight:700;color:#fff;cursor:pointer}
-  .police{background:#1d4ed8}.amb{background:#dc2626}.rescue{background:#ea580c}.fire{background:#b45309}
-  button:active{transform:scale(.97)}
-  #status{background:#1e293b;border-radius:.75rem;padding:1rem;min-height:4.5rem;text-align:left;line-height:1.6}
-  .contacts{text-align:left;margin-top:1.5rem}
-  .contacts h3{margin-bottom:.5rem}
-  .contacts li{list-style:none;background:#1e293b;padding:.6rem .9rem;border-radius:.5rem;margin-bottom:.4rem;display:flex;justify-content:space-between}
+  p.sub{color:#94a3b8;margin-bottom:1.25rem}
+  .search{width:100%;padding:.8rem 1rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:1rem;margin-bottom:1rem}
+  .cats{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+  .cats button{background:#1e293b;color:#cbd5e1;border:0;border-radius:2rem;padding:.5rem 1rem;cursor:pointer;font-size:.95rem}
+  .cats button.active{background:#6366f1;color:#fff}
+  .card{background:#1e293b;border-radius:.75rem;padding:1rem;margin-bottom:.75rem}
+  .card h3{font-size:1.1rem;margin-bottom:.25rem}
+  .card .meta{color:#94a3b8;font-size:.9rem;margin-bottom:.6rem}
+  .card .price{color:#4ade80;font-weight:700;margin-bottom:.75rem}
+  .card .row{display:flex;gap:.5rem}
+  .card button{flex:1;padding:.65rem;border:0;border-radius:.6rem;font-weight:600;cursor:pointer}
+  .call{background:#6366f1;color:#fff}
+  .book{background:#0ea5e9;color:#fff}
+  #status{background:#1e293b;border-radius:.75rem;padding:1rem;line-height:1.7;min-height:4rem;margin-top:.5rem}
+  #status b{color:#4ade80}
   a.back{color:#818cf8;display:block;margin-top:1.5rem}
 </style>
 </head>
 <body>
 <div class="app">
-  <span class="badge">Interactive demo — simulated, no real call is made</span>
+  <span class="badge">Interactive demo — sample workers, no real booking is made</span>
   <h1>Dial for Help</h1>
-  <p class="sub">One-tap emergency assistance. Tap a service to see how it works.</p>
-  <div class="gps">Your location: <b id="loc">Detecting GPS…</b><br><span style="color:#94a3b8;font-size:.85rem">Shared live with the responder when you call.</span></div>
-  <div class="grid">
-    <button class="police" onclick="call('Police', '15')">🚓 Police<br><small>15</small></button>
-    <button class="amb" onclick="call('Ambulance', '1122')">🚑 Ambulance<br><small>1122</small></button>
-    <button class="rescue" onclick="call('Rescue', '1122')">🛟 Rescue<br><small>1122</small></button>
-    <button class="fire" onclick="call('Fire Brigade', '16')">🔥 Fire Brigade<br><small>16</small></button>
-  </div>
-  <div id="status">No call yet. Tap a service above.</div>
-  <div class="contacts">
-    <h3>Saved emergency contacts</h3>
-    <ul>
-      <li><span>Family — Home</span><b>0300 1234567</b></li>
-      <li><span>Nearest Hospital</span><b>042 111 222 333</b></li>
-      <li><span>Neighbour — Ahmed</span><b>0301 7654321</b></li>
-    </ul>
-  </div>
+  <p class="sub">Need a worker? Find a plumber, electrician, mechanic or any skilled worker near you — call them or book them in one tap.</p>
+  <input class="search" id="search" placeholder="Search: plumber, electrician, mechanic..." oninput="render()">
+  <div class="cats" id="cats"></div>
+  <div id="list"></div>
+  <div id="status">Choose a service above, then call or book a worker.</div>
   <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
 </div>
 <script>
-  const loc=document.getElementById("loc");
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(p=>{loc.textContent=p.coords.latitude.toFixed(4)+", "+p.coords.longitude.toFixed(4);},
-      ()=>{loc.textContent="31.5204, 74.3587 (Lahore, Pakistan)";},{timeout:5000});
-  } else loc.textContent="31.5204, 74.3587 (Lahore, Pakistan)";
-  function call(name,num){
-    const s=document.getElementById("status");
-    s.innerHTML="📞 <b>Calling "+name+" ("+num+")…</b><br>GPS location sent: "+loc.textContent+"<br>Status: <b style='color:#4ade80'>Connected — help is on the way.</b>";
+  const workers=[
+    {name:"Ahmed Raza", skill:"Plumber", area:"Gulberg, Lahore", rating:4.8, jobs:132, price:"PKR 800 / visit", phone:"0300 111 2233"},
+    {name:"Bilal Hussain", skill:"Plumber", area:"Model Town, Lahore", rating:4.6, jobs:98, price:"PKR 700 / visit", phone:"0301 222 3344"},
+    {name:"Usman Ali", skill:"Electrician", area:"Johar Town, Lahore", rating:4.9, jobs:210, price:"PKR 900 / visit", phone:"0302 333 4455"},
+    {name:"Hassan Khan", skill:"Electrician", area:"DHA, Lahore", rating:4.7, jobs:154, price:"PKR 1,000 / visit", phone:"0303 444 5566"},
+    {name:"Nadeem Akhtar", skill:"Mechanic", area:"Ferozepur Road, Lahore", rating:4.8, jobs:187, price:"PKR 1,200 / visit", phone:"0304 555 6677"},
+    {name:"Imran Shah", skill:"Mechanic", area:"Cantt, Lahore", rating:4.5, jobs:76, price:"PKR 1,000 / visit", phone:"0305 666 7788"},
+    {name:"Shahid Mehmood", skill:"Carpenter", area:"Ichhra, Lahore", rating:4.7, jobs:121, price:"PKR 1,500 / day", phone:"0306 777 8899"},
+    {name:"Tariq Aziz", skill:"Painter", area:"Samanabad, Lahore", rating:4.6, jobs:89, price:"PKR 2,000 / day", phone:"0307 888 9900"},
+    {name:"Zeeshan Ahmed", skill:"AC Technician", area:"Bahria Town, Lahore", rating:4.9, jobs:143, price:"PKR 1,500 / visit", phone:"0308 999 0011"},
+    {name:"Rashid Minhas", skill:"Mason", area:"Wapda Town, Lahore", rating:4.5, jobs:64, price:"PKR 2,500 / day", phone:"0309 000 1122"},
+    {name:"Farhan Iqbal", skill:"Cleaner", area:"Gulberg, Lahore", rating:4.7, jobs:112, price:"PKR 1,200 / visit", phone:"0310 111 2233"},
+    {name:"Waqas Ahmed", skill:"Welder", area:"Badami Bagh, Lahore", rating:4.6, jobs:58, price:"PKR 1,800 / day", phone:"0311 222 3344"},
+  ];
+  const cats=["All","Plumber","Electrician","Mechanic","Carpenter","Painter","AC Technician","Mason","Cleaner","Welder"];
+  let active="All";
+  const catsEl=document.getElementById("cats");
+  cats.forEach(c=>{
+    const b=document.createElement("button"); b.textContent=c;
+    if(c==="All") b.className="active";
+    b.onclick=()=>{active=c; document.querySelectorAll(".cats button").forEach(x=>x.classList.remove("active")); b.classList.add("active"); render();};
+    catsEl.appendChild(b);
+  });
+  function render(){
+    const q=document.getElementById("search").value.toLowerCase();
+    const list=document.getElementById("list"); list.innerHTML="";
+    const shown=workers.filter(w=>(active==="All"||w.skill===active)&&(w.name+" "+w.skill+" "+w.area).toLowerCase().includes(q));
+    if(!shown.length){list.innerHTML="<p style='color:#94a3b8'>No worker found for that search. Try another service.</p>"; return;}
+    shown.forEach(w=>{
+      const d=document.createElement("div"); d.className="card";
+      d.innerHTML="<h3>"+w.name+"</h3><div class='meta'>🔧 "+w.skill+" · 📍 "+w.area+"<br>⭐ "+w.rating+" · "+w.jobs+" jobs done</div><div class='price'>"+w.price+"</div>"+
+        "<div class='row'><button class='call'>📞 Call</button><button class='book'>📅 Book now</button></div>";
+      d.querySelector(".call").onclick=()=>{document.getElementById("status").innerHTML="📞 <b>Calling "+w.name+" ("+w.skill+")…</b><br>Phone: "+w.phone+"<br>He is about 2 km away and usually answers in under a minute.";};
+      d.querySelector(".book").onclick=()=>{document.getElementById("status").innerHTML="✅ <b>Booked!</b> "+w.name+" ("+w.skill+") will come to your location.<br>Price: "+w.price+" · You will get a confirmation call shortly.";};
+      list.appendChild(d);
+    });
   }
+  render();
 </script>
 </body>
 </html>
