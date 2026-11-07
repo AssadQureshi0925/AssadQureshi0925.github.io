@@ -191,17 +191,17 @@ function initContactForm() {
     submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending message...`;
     submitBtn.disabled = true;
 
-    setTimeout(() => {
-      submitBtn.innerHTML = originalContent;
-      submitBtn.disabled = false;
-      feedback.textContent = "Shukriya! Aapka message Assad Ullah tak pohnch gaya hai. Jald rabta kiya jaye ga.";
-      feedback.className = "form-feedback success";
-      form.reset();
-
-      setTimeout(() => {
-        feedback.style.display = "none";
-      }, 6000);
-    }, 1200);
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const subject = form.subject.value.trim();
+    const message = form.message.value.trim();
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nProject type: ${subject}\n\n${message}`);
+    window.location.href = `mailto:assadullah10001@gmail.com?subject=${encodeURIComponent(subject || "New project enquiry")}&body=${body}`;
+    submitBtn.innerHTML = originalContent;
+    submitBtn.disabled = false;
+    feedback.textContent = "Opening your email app \u2014 your message will be sent to Assad Ullah from there.";
+    feedback.className = "form-feedback success";
+    form.reset();
   });
 }
 
