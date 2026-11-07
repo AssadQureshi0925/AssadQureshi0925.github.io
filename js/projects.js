@@ -39,7 +39,7 @@ const projectsData = [
     shortDescription: "A mission-critical Flutter emergency assistance app featuring direct speed dialing, live GPS coordinates sharing, and Firebase backend.",
     fullDescription: "Dial for Help is Assadullah's flagship mobile application built using Flutter & Dart. It allows users to quickly trigger emergency calls, dispatch live GPS locations to designated responders, fetch nearest emergency services (Police, Ambulance, Rescue), and maintain an offline directory of vital helpline contacts.",
     technologies: ["Flutter", "Dart", "Firebase", "Geolocation API", "Direct Call Services", "Provider / Riverpod"],
-    liveDemo: "https://github.com/AssadQureshi0925/dial-for-help",
+    liveDemo: "https://assadqureshi0925.github.io/projects/dial-for-help/",
     github: "https://github.com/AssadQureshi0925/dial-for-help"
   },
   {
@@ -52,7 +52,7 @@ const projectsData = [
     shortDescription: "Multi-agent autonomous collaborative system capable of complex research, planning, code execution, and autonomous decision-making.",
     fullDescription: "Built with CrewAI, LangGraph, and Google Gemini API. This agentic system coordinates specialized autonomous worker agents (Researcher, Coder, Reviewer, and Manager) to autonomously accomplish end-to-end user goals without constant human prompting.",
     technologies: ["Agentic AI", "LangGraph", "CrewAI", "Gemini 1.5 Pro/Flash", "Python", "Tool Calling"],
-    liveDemo: "https://github.com/AssadQureshi0925/agentic-ai-workspace",
+    liveDemo: "https://assadqureshi0925.github.io/projects/agentic-ai/",
     github: "https://github.com/AssadQureshi0925/agentic-ai-workspace"
   },
   {
@@ -65,7 +65,7 @@ const projectsData = [
     shortDescription: "Automated end-to-end data processing, document parsing, and automated reporting pipeline using Python and AI bots.",
     fullDescription: "An automation pipeline designed to eliminate manual workflows. Integrates with webhooks, OCR, Gmail, and Google Sheets to automatically extract data from invoices and customer inquiries, summarize them with LLMs, and route structured notifications instantly.",
     technologies: ["Python", "FastAPI", "Gemini API", "Make/n8n Automations", "Webhooks", "Google Cloud"],
-    liveDemo: "https://github.com/AssadQureshi0925/ai-workflow-automation",
+    liveDemo: "https://assadqureshi0925.github.io/projects/workflow-automation/",
     github: "https://github.com/AssadQureshi0925/ai-workflow-automation"
   },
   {
@@ -78,7 +78,7 @@ const projectsData = [
     shortDescription: "Full-stack web app allowing users to chat with enterprise documents, PDFs, and data using vector search and generative AI.",
     fullDescription: "Modern web application crafted with Next.js, React, and Python FastAPI backend. Users can upload various file formats and engage in multimodal question-answering with exact source citations and grounded responses.",
     technologies: ["Next.js", "React", "Python", "FastAPI", "Pinecone Vector DB", "Tailwind CSS"],
-    liveDemo: "https://github.com/AssadQureshi0925/smartdoc-ai-web",
+    liveDemo: "https://assadqureshi0925.github.io/projects/smartdoc-ai/",
     github: "https://github.com/AssadQureshi0925/smartdoc-ai-web"
   },
   {
@@ -91,7 +91,7 @@ const projectsData = [
     shortDescription: "Real-time AI voice assistant and chat mobile application built with Flutter and Gemini Live multimodal streaming.",
     fullDescription: "A cross-platform iOS and Android app powered by Flutter that provides voice-driven AI interactions, text-to-speech, speech-to-text, and real-time vision understanding through the device camera.",
     technologies: ["Flutter", "Dart", "Gemini API", "Audio Streaming", "REST/WebSockets", "Material 3"],
-    liveDemo: "https://github.com/AssadQureshi0925/flutter-ai-companion",
+    liveDemo: "https://assadqureshi0925.github.io/projects/ai-companion/",
     github: "https://github.com/AssadQureshi0925/flutter-ai-companion"
   },
   {
@@ -104,7 +104,7 @@ const projectsData = [
     shortDescription: "Autonomous social media content generator and scheduler with AI copy and trend analysis.",
     fullDescription: "An automated bot that analyzes trending industry topics, synthesizes engaging multi-platform posts, and schedules publications autonomously with human-in-the-loop review capabilities.",
     technologies: ["Python", "Automation Scripts", "Gemini API", "REST APIs", "Cron Schedulers"],
-    liveDemo: "https://github.com/AssadQureshi0925/autopost-ai",
+    liveDemo: "https://assadqureshi0925.github.io/projects/autopost-ai/",
     github: "https://github.com/AssadQureshi0925/autopost-ai"
   }
 ];
@@ -136,12 +136,9 @@ function renderProjects(filter = "all") {
         </div>
         <div class="project-footer">
           <div class="project-links">
-            ${project.liveDemo && project.liveDemo !== project.github ? `<a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Link
-            </a>` : ""}
-            <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub Repository">
-              <i class="fa-brands fa-github"></i> Code
-            </a>
+            <button class="project-link demo-btn" data-url="${project.liveDemo}" data-title="${project.title}" aria-label="Live Demo">
+              <i class="fa-solid fa-play"></i> Live Demo
+            </button>
           </div>
           <button class="btn btn-ghost btn-sm open-modal-btn" data-id="${project.id}">
             Details &rarr;
@@ -195,12 +192,9 @@ function openProjectModal(projectId) {
     </div>
 
     <div style="display: flex; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
-      ${project.liveDemo && project.liveDemo !== project.github ? `<a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1;">
-        <i class="fa-solid fa-external-link"></i> Project Link
-      </a>` : ""}
-      <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex: 1;">
-        <i class="fa-brands fa-github"></i> View GitHub Code
-      </a>
+      <button class="btn btn-primary demo-btn" data-url="${project.liveDemo}" data-title="${project.title}" style="flex: 1;">
+        <i class="fa-solid fa-play"></i> Try Live Demo
+      </button>
     </div>
   `;
 
@@ -215,6 +209,31 @@ function closeProjectModal() {
     document.body.style.overflow = "auto";
   }
 }
+
+// In-portfolio live demo overlay (iframe, no GitHub visit needed)
+function openDemo(url, title) {
+  const modal = document.getElementById("demo-modal");
+  const frame = document.getElementById("demo-frame");
+  const heading = document.getElementById("demo-title");
+  if (!modal || !frame) return;
+  frame.src = url;
+  if (heading) heading.textContent = title || "Live Demo";
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeDemo() {
+  const modal = document.getElementById("demo-modal");
+  const frame = document.getElementById("demo-frame");
+  if (!modal) return;
+  modal.classList.remove("open");
+  if (frame) frame.src = "about:blank";
+  document.body.style.overflow = "auto";
+}
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".demo-btn");
+  if (btn) { closeProjectModal(); openDemo(btn.getAttribute("data-url"), btn.getAttribute("data-title")); }
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDemo(); });
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
