@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Voice & Chat Companion — Live Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;justify-content:center;padding:2rem 1rem}
+  .app{width:100%;max-width:520px}
+  .badge{display:inline-block;background:#1e3a8a;color:#bfdbfe;padding:.3rem .8rem;border-radius:2rem;font-size:.8rem;margin-bottom:1rem}
+  h1{font-size:1.7rem;margin-bottom:.25rem}
+  p.sub{color:#94a3b8;margin-bottom:1.5rem}
+  #chat{background:#1e293b;border-radius:.75rem;padding:1rem;min-height:300px;line-height:1.6;margin-bottom:1rem;overflow-y:auto;max-height:420px}
+  .msg{margin-bottom:.75rem;max-width:85%;padding:.6rem .9rem;border-radius:.75rem}
+  .ai{background:#312e81}
+  .user{background:#0ea5e9;margin-left:auto;text-align:right}
+  form{display:flex;gap:.5rem}
+  input{flex:1;padding:.8rem 1rem;border-radius:.6rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:1rem}
+  button{padding:.8rem 1.1rem;border:0;border-radius:.6rem;background:#2563eb;color:#fff;font-weight:600;cursor:pointer}
+  a.back{color:#818cf8;display:block;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">Interactive demo — simulated companion, no real AI call</span>
+  <h1>AI Voice &amp; Chat Companion</h1>
+  <p class="sub">Talk to the companion. It listens, understands, and replies — try asking about the weather, a joke, or your day.</p>
+  <div id="chat"><div class="msg ai">Hi, I am your AI companion. How can I help you today?</div></div>
+  <form id="form"><input id="input" placeholder="Type a message..." required><button type="submit">Send</button></form>
+  <a class="back" href="https://assadqureshi0925.github.io/">← Back to portfolio</a>
+</div>
+<script>
+  const chat=document.getElementById("chat"), input=document.getElementById("input");
+  function add(cls,text){const d=document.createElement("div");d.className="msg "+cls;d.textContent=text;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;}
+  function reply(q){
+    const l=q.toLowerCase();
+    if(l.includes("weather")) return "Today in Lahore it is sunny, around 28°C. A good day for a walk after lunch.";
+    if(l.includes("joke")) return "Why did the developer go broke? Because he used up all his cache.";
+    if(l.includes("time")||l.includes("date")) return "Right now it is "+new Date().toLocaleString()+".";
+    if(l.includes("hello")||l.includes("hi")||l.includes("salam")) return "Hello! Great to hear from you. What are we working on today?";
+    if(l.includes("thank")) return "You are welcome! Anything else I can do for you?";
+    if(l.includes("name")) return "I am the AI Companion app from Assadullah's portfolio — voice, chat and vision in one Flutter app.";
+    if(l.includes("sad")||l.includes("tired")) return "That sounds tough. Take a short break, drink some water, and tell me one small thing that went well today.";
+    return "Got it — '"+q+"'. In the full app I would answer that with live voice and vision. Try asking me for a joke, the weather, or the time.";
+  }
+  document.getElementById("form").addEventListener("submit",e=>{
+    e.preventDefault(); const q=input.value.trim(); if(!q) return;
+    add("user",q); input.value="";
+    setTimeout(()=>add("ai",reply(q)),700);
+  });
+</script>
+</body>
+</html>
