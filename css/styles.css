@@ -1536,3 +1536,11 @@ a {
     text-align: center;
   }
 }
+
+/* In-portfolio live demo overlay */
+.demo-overlay { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.85); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 1rem; }
+.demo-overlay.open { display: flex; }
+.demo-container { width: min(960px, 96vw); height: 88vh; display: flex; flex-direction: column; overflow: hidden; }
+.demo-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-color); }
+.demo-header h3 { font-size: 1.1rem; }
+#demo-frame { flex: 1; width: 100%; border: 0; background: #0f172a; }
