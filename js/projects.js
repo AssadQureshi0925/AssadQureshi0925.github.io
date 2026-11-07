@@ -1,5 +1,5 @@
 /**
- * Projects Data for Assad Ullah
+ * Projects Data for Assadullah
  * Focused on: AI Engineering, Agentic AI, Automation, Flutter (Dial for Help), and AI Web Apps
  */
 const projectsData = [
@@ -11,7 +11,7 @@ const projectsData = [
     icon: "fa-solid fa-phone-volume",
     iconColor: "#ef4444",
     shortDescription: "A mission-critical Flutter emergency assistance app featuring direct speed dialing, live GPS coordinates sharing, and Firebase backend.",
-    fullDescription: "Dial for Help is Assad Ullah's flagship mobile application built using Flutter & Dart. It allows users to quickly trigger emergency calls, dispatch live GPS locations to designated responders, fetch nearest emergency services (Police, Ambulance, Rescue), and maintain an offline directory of vital helpline contacts.",
+    fullDescription: "Dial for Help is Assadullah's flagship mobile application built using Flutter & Dart. It allows users to quickly trigger emergency calls, dispatch live GPS locations to designated responders, fetch nearest emergency services (Police, Ambulance, Rescue), and maintain an offline directory of vital helpline contacts.",
     technologies: ["Flutter", "Dart", "Firebase", "Geolocation API", "Direct Call Services", "Provider / Riverpod"],
     liveDemo: "https://github.com/AssadQureshi0925/dial-for-help",
     github: "https://github.com/AssadQureshi0925/dial-for-help"
