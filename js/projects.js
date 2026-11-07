@@ -110,9 +110,9 @@ function renderProjects(filter = "all") {
         </div>
         <div class="project-footer">
           <div class="project-links">
-            <a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo">
+            ${project.liveDemo && project.liveDemo !== project.github ? `<a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Link
-            </a>
+            </a>` : ""}
             <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub Repository">
               <i class="fa-brands fa-github"></i> Code
             </a>
@@ -169,9 +169,9 @@ function openProjectModal(projectId) {
     </div>
 
     <div style="display: flex; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
-      <a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1;">
+      ${project.liveDemo && project.liveDemo !== project.github ? `<a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1;">
         <i class="fa-solid fa-external-link"></i> Project Link
-      </a>
+      </a>` : ""}
       <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex: 1;">
         <i class="fa-brands fa-github"></i> View GitHub Code
       </a>
