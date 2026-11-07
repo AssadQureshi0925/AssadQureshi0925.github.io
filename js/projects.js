@@ -17,19 +17,6 @@ const projectsData = [
     github: "https://github.com/AssadQureshi0925/AssadQureshi0925.github.io/tree/main/projects/todo-app"
   },
   {
-    id: "simple-calculator",
-    title: "Simple Calculator",
-    category: "web",
-    categoryLabel: "Web App",
-    icon: "fa-solid fa-calculator",
-    iconColor: "#10b981",
-    shortDescription: "A working calculator with keyboard support: add, subtract, multiply, divide and percentages.",
-    fullDescription: "A simple, fully working calculator built with plain HTML, CSS and JavaScript. Use the on-screen buttons or type on your keyboard, with backspace, clear and percentage support.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    liveDemo: "https://assadqureshi0925.github.io/projects/calculator/",
-    github: "https://github.com/AssadQureshi0925/AssadQureshi0925.github.io/tree/main/projects/calculator"
-  },
-  {
     id: "focus-timer",
     title: "Focus Timer (Pomodoro)",
     category: "web",
